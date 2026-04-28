@@ -12,6 +12,7 @@ body {
     text-align: center;
     font-family: "Comic Sans MS", cursive;
     color: white;
+    overflow: hidden;
 }
 
 /* Lights box */
@@ -24,16 +25,26 @@ body {
     border-radius: 12px;
     display: inline-block;
     cursor: pointer;
+    position: relative;
+    z-index: 2;
 }
 
-/* Spotlight */
+/* Cone spotlight (narrow top → wide bottom) */
 .spotlight {
-    width: 180px;
-    height: 350px;
-    margin: 0 auto;
-    background: radial-gradient(ellipse at top, rgba(255,255,255,0.8), transparent 70%);
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 400px;
+
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 400px solid rgba(255, 255, 255, 0.25);
+
     opacity: 0;
-    transition: 1s;
+    transition: opacity 1s ease;
+    pointer-events: none;
 }
 
 /* Video frame */
@@ -41,7 +52,9 @@ body {
     width: 320px;
     height: 180px;
     border: 2px solid white;
-    margin: 40px auto;
+    margin: 120px auto;
+    position: relative;
+    z-index: 1;
 }
 </style>
 </head>
