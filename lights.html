@@ -42,7 +42,7 @@ body {
     max-width: 600px;
     height: 340px;
     margin: 30px auto;
-    display: none; /* hidden initially */
+    display: none;
 }
 
 /* Video */
@@ -50,6 +50,41 @@ video {
     width: 100%;
     height: 100%;
     border-radius: 10px;
+}
+
+/* Reveal button */
+.reveal-btn {
+    margin: 20px auto;
+    padding: 12px 25px;
+    background: pink;
+    color: black;
+    border-radius: 12px;
+    cursor: pointer;
+    display: none;
+}
+
+/* Typing text */
+.typing-text {
+    font-family: "Bradley Hand ITC", cursive;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+/* Gift video */
+.gift-box {
+    width: 300px;
+    margin: 20px auto;
+    display: none;
+}
+
+/* Final message */
+.final-box {
+    margin-top: 20px;
+    padding: 15px;
+    background: pink;
+    color: black;
+    border-radius: 12px;
+    display: none;
 }
 </style>
 </head>
@@ -66,6 +101,24 @@ video {
     </video>
 </div>
 
+<div class="reveal-btn" id="afterVideoBtn" onclick="showTyping()">Click here BB</div>
+
+<div class="typing-text" id="typing"></div>
+
+<div class="gift-box" id="giftBox">
+    <video id="giftVideo" autoplay loop muted>
+        <source src="gift.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="reveal-btn" id="revealGiftBtn" onclick="revealGift()">Reveal 🎁</div>
+
+<div class="typing-text" id="finalText"></div>
+
+<div class="final-box" id="finalBox">
+    Once again wishing you a very happy and wonderful birthday to my gualabacha fullll 😘🌹
+</div>
+
 <script>
 let step = 0;
 
@@ -76,21 +129,57 @@ function handleClick() {
     const video = document.getElementById("video");
 
     if (step === 0) {
-        // Lights
         light.style.opacity = "1";
         btn.innerHTML = "Camera 🎥";
         step++;
     }
     else if (step === 1) {
-        // Camera
         videoBox.style.display = "block";
         btn.innerHTML = "Action 🎬";
         step++;
     }
     else if (step === 2) {
-        // Action
         video.play();
     }
+}
+
+/* After main video ends */
+document.getElementById("video").addEventListener("ended", function() {
+    document.getElementById("afterVideoBtn").style.display = "inline-block";
+});
+
+/* Typing animation */
+function showTyping() {
+    const text = "Click to reveal the surprise.";
+    const typingEl = document.getElementById("typing");
+    const giftBox = document.getElementById("giftBox");
+    const revealBtn = document.getElementById("revealGiftBtn");
+
+    typingEl.innerHTML = "";
+    let i = 0;
+
+    function type() {
+        if (i < text.length) {
+            typingEl.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, 40);
+        } else {
+            giftBox.style.display = "block";
+            revealBtn.style.display = "inline-block";
+        }
+    }
+    type();
+}
+
+/* Reveal gift */
+function revealGift() {
+    document.getElementById("giftBox").style.display = "none";
+    document.getElementById("revealGiftBtn").style.display = "none";
+
+    const final = document.getElementById("finalText");
+    final.innerHTML = "Hey beautiful, you have successfully ordered your gift. You will get it when it arrives 🥰";
+
+    document.getElementById("finalBox").style.display = "block";
 }
 </script>
 
