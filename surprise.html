@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surprise</title>
 
+<style>
+body {
+    margin: 0;
+    background: pink;
+    text-align: center;
+    font-family: "Comic Sans MS", cursive;
+}
+
+/* Typing text */
+.typing {
+    font-family: "Bradley Hand ITC", cursive;
+    font-size: 20px;
+    margin-top: 50px;
+}
+
+/* Gift video */
+.gift-box {
+    width: 320px;
+    margin: 20px auto;
+    display: none;
+}
+
+/* Reveal button */
+.reveal-btn {
+    padding: 12px 25px;
+    background: white;
+    border-radius: 12px;
+    cursor: pointer;
+    display: none;
+}
+
+/* Final message box (same size as video frame) */
+.message-box {
+    width: 320px;
+    height: 180px;
+    margin: 20px auto;
+    background: white;
+    display: none;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+/* Final wish */
+.final-box {
+    margin-top: 20px;
+    padding: 15px;
+    background: white;
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="typing" id="typing"></div>
+
+<div class="gift-box" id="giftBox">
+    <video autoplay loop muted width="100%">
+        <source src="gift.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="reveal-btn" id="revealBtn" onclick="revealGift()">
+    Reveal 🎁
+</div>
+
+<div class="message-box" id="messageBox">
+    Hey beautiful, you have successfully ordered your gift. You will get it when it arrives 🥰
+</div>
+
+<div class="final-box" id="finalBox">
+    Once again wishing you a very happy and wonderful birthday to my gualabacha fullll 😘🌹
+</div>
+
+<script>
+const text = "Click to reveal the surprise.";
+let i = 0;
+
+function type() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, 40);
+    } else {
+        document.getElementById("giftBox").style.display = "block";
+        document.getElementById("revealBtn").style.display = "inline-block";
+    }
+}
+
+type();
+
+function revealGift() {
+    document.getElementById("giftBox").style.display = "none";
+    document.getElementById("revealBtn").style.display = "none";
+
+    document.getElementById("messageBox").style.display = "block";
+    document.getElementById("finalBox").style.display = "block";
+}
+</script>
+
+</body>
+</html>
