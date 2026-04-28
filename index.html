@@ -80,6 +80,22 @@ p {
     p { font-size: 14px; }
     .gallery img { width: 90px; height: 90px; }
 }
+    .cta-box {
+    margin-top: 25px;
+    padding: 15px;
+    background-color: pink;
+    color: black;
+    font-size: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.cta-box:hover {
+    background-color: #ff85a2;
+    transform: scale(1.05);
+}
 </style>
 
 </head>
@@ -122,7 +138,9 @@ p {
     <img src="photo5.jpg">
 </div>
 ```
-
+<div class="cta-box" onclick="startCelebration()">
+    Click here to start Celebration 🎉
+</div>
 </div>
 
 <script>
@@ -143,6 +161,9 @@ setInterval(() => {
         emoji.remove();
     }, 6000);
 }, 300);
+    function startCelebration() {
+    alert("Celebration starts now ❤️🎉");
+}
 </script>
 
 </body>
