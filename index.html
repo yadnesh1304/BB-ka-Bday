@@ -17,11 +17,13 @@ body {
     height: 100vh;
     text-align: center;
     font-family: "Comic Sans MS", cursive, sans-serif;
+    overflow: hidden;
 }
 
 .container {
     max-width: 700px;
     padding: 20px;
+    animation: fadeIn 2s ease-in-out;
 }
 
 /* Header */
@@ -32,7 +34,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Message text */
+/* Message */
 p {
     font-size: 15px;
     color: black;
@@ -40,14 +42,43 @@ p {
     margin: 12px 0;
 }
 
-/* Mobile responsiveness */
+/* Fade animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+/* Floating emojis */
+.emoji {
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* Image section */
+.gallery {
+    margin-top: 20px;
+}
+
+.gallery img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 5px;
+}
+
+/* Mobile */
 @media (max-width: 600px) {
-    h1 {
-        font-size: 18px;
-    }
-    p {
-        font-size: 14px;
-    }
+    h1 { font-size: 18px; }
+    p { font-size: 14px; }
+    .gallery img { width: 90px; height: 90px; }
 }
 </style>
 
@@ -81,9 +112,36 @@ p {
     Thank you for being my happiness, my peace, and my everything. 
     I love you more than words can ever express 💕🥰
 </p>
+
+<!-- OPTIONAL: Add your photos -->
+<div class="gallery">
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+    <img src="photo3.jpg">
+</div>
 ```
 
 </div>
+
+<script>
+// Floating emojis generator
+const emojis = ["❤️","😘","💖","🥰","💕","🧸","💝"];
+
+setInterval(() => {
+    const emoji = document.createElement("div");
+    emoji.classList.add("emoji");
+    emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+    emoji.style.left = Math.random() * 100 + "vw";
+    emoji.style.fontSize = (Math.random() * 20 + 15) + "px";
+    emoji.style.animationDuration = (Math.random() * 3 + 3) + "s";
+
+    document.body.appendChild(emoji);
+
+    setTimeout(() => {
+        emoji.remove();
+    }, 6000);
+}, 300);
+</script>
 
 </body>
 </html>
