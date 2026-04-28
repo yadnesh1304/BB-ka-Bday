@@ -74,13 +74,8 @@ p {
     margin: 5px;
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-    h1 { font-size: 18px; }
-    p { font-size: 14px; }
-    .gallery img { width: 90px; height: 90px; }
-}
-    .cta-box {
+/* CTA box */
+.cta-box {
     margin-top: 25px;
     padding: 15px;
     background-color: pink;
@@ -95,6 +90,13 @@ p {
 .cta-box:hover {
     background-color: #ff85a2;
     transform: scale(1.05);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    h1 { font-size: 18px; }
+    p { font-size: 14px; }
+    .gallery img { width: 90px; height: 90px; }
 }
 </style>
 
@@ -129,22 +131,23 @@ p {
     I love you more than words can ever express 💕🥰
 </p>
 
-<!-- OPTIONAL: Add your photos -->
+<!-- Photos -->
 <div class="gallery">
     <img src="photo1.jpg">
     <img src="photo2.jpg">
     <img src="photo3.jpg">
-    <img src="photo4.jpg">
-    <img src="photo5.jpg">
 </div>
-```
+
+<!-- CTA -->
 <div class="cta-box" onclick="startCelebration()">
     Click here to start Celebration 🎉
 </div>
+```
+
 </div>
 
 <script>
-// Floating emojis generator
+// Floating emojis
 const emojis = ["❤️","😘","💖","🥰","💕","🧸","💝"];
 
 setInterval(() => {
@@ -161,7 +164,9 @@ setInterval(() => {
         emoji.remove();
     }, 6000);
 }, 300);
-    function startCelebration() {
+
+// CTA click
+function startCelebration() {
     alert("Celebration starts now ❤️🎉");
 }
 </script>
