@@ -14,7 +14,7 @@ body {
     color: white;
 }
 
-/* Lights box */
+/* Button */
 .light-box {
     margin-top: 30px;
     padding: 12px 25px;
@@ -28,7 +28,7 @@ body {
 
 /* Spotlight */
 .spotlight {
-    width: 180px;
+    width: 200px;
     height: 350px;
     margin: 0 auto;
     background: radial-gradient(ellipse at top, rgba(255,255,255,0.8), transparent 70%);
@@ -36,32 +36,61 @@ body {
     transition: 1s;
 }
 
-/* Video frame */
+/* Video container */
 .video-frame {
-    width: 320px;
-    height: 180px;
-    border: 2px solid white;
-    margin: 40px auto;
+    width: 90%;
+    max-width: 600px;
+    height: 340px;
+    margin: 30px auto;
+    display: none; /* hidden initially */
+}
+
+/* Video */
+video {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="light-box" onclick="turnOnLight()">Lights 💡</div>
+<div class="light-box" id="btn" onclick="handleClick()">Lights 💡</div>
 
 <div class="spotlight" id="light"></div>
 
-<div class="video-frame">
-    <video width="100%" height="100%" controls>
+<div class="video-frame" id="videoBox">
+    <video id="video" poster="thumbnail.jpg">
         <source src="video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
     </video>
 </div>
 
 <script>
-function turnOnLight() {
-    document.getElementById("light").style.opacity = "1";
+let step = 0;
+
+function handleClick() {
+    const btn = document.getElementById("btn");
+    const light = document.getElementById("light");
+    const videoBox = document.getElementById("videoBox");
+    const video = document.getElementById("video");
+
+    if (step === 0) {
+        // Lights
+        light.style.opacity = "1";
+        btn.innerHTML = "Camera 🎥";
+        step++;
+    }
+    else if (step === 1) {
+        // Camera
+        videoBox.style.display = "block";
+        btn.innerHTML = "Action 🎬";
+        step++;
+    }
+    else if (step === 2) {
+        // Action
+        video.play();
+    }
 }
 </script>
 
