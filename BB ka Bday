@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #E2B365;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.container {
+    max-width: 700px;
+    padding: 20px;
+}
+
+/* Header */
+h1 {
+    font-family: "Bradley Hand ITC", cursive;
+    color: #f40d30;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* Message text */
+p {
+    font-size: 15px;
+    color: black;
+    line-height: 1.8;
+    margin: 12px 0;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 18px;
+    }
+    p {
+        font-size: 14px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Dear Shruhsti😘</h1>
+
+```
+<p>Happy Birthday, my love ❤️🎂</p>
+
+<p>
+    You are the most beautiful part of my life, and I feel so lucky every single day 
+    to have you by my side. You make my world brighter, my heart lighter, 
+    and my life so much more meaningful 💖✨
+</p>
+
+<p>
+    I pray that this year brings you endless happiness, success, 
+    and all the love you truly deserve 💫
+</p>
+
+<p>
+    May every dream of yours come true, and may you always keep smiling 
+    the way you do ❤️
+</p>
+
+<p>
+    Thank you for being my happiness, my peace, and my everything. 
+    I love you more than words can ever express 💕🥰
+</p>
+```
+
+</div>
+
+</body>
+</html>
