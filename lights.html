@@ -12,7 +12,6 @@ body {
     text-align: center;
     font-family: "Comic Sans MS", cursive;
     color: white;
-    overflow: hidden;
 }
 
 /* Lights box */
@@ -29,22 +28,33 @@ body {
     z-index: 2;
 }
 
-/* Cone spotlight (narrow top → wide bottom) */
+/* Spotlight container (anchored to button) */
 .spotlight {
     position: absolute;
-    top: 80px;
     left: 50%;
+    top: 100%; /* starts exactly from bottom of button */
     transform: translateX(-50%);
-    width: 0;
-    height: 400px;
+    width: 220px;
+    height: 350px;
 
-    border-left: 100px solid transparent;
-    border-right: 100px solid transparent;
-    border-bottom: 400px solid rgba(255, 255, 255, 0.25);
+    /* cone gradient */
+    background: radial-gradient(
+        ellipse at top,
+        rgba(255,255,255,0.7) 0%,
+        rgba(255,255,255,0.4) 30%,
+        rgba(255,255,255,0.1) 60%,
+        transparent 80%
+    );
 
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     opacity: 0;
-    transition: opacity 1s ease;
+    transition: opacity 1.2s ease-in;
     pointer-events: none;
+}
+
+/* active light */
+.spotlight.active {
+    opacity: 1;
 }
 
 /* Video frame */
@@ -53,23 +63,22 @@ body {
     height: 180px;
     border: 2px solid white;
     margin: 120px auto;
-    position: relative;
-    z-index: 1;
 }
 </style>
 </head>
 
 <body>
 
-<div class="light-box" onclick="turnOnLight()">Lights 💡</div>
-
-<div class="spotlight" id="light"></div>
+<div class="light-box" onclick="turnOnLight()">
+    Lights 💡
+    <div class="spotlight" id="light"></div>
+</div>
 
 <div class="video-frame"></div>
 
 <script>
 function turnOnLight() {
-    document.getElementById("light").style.opacity = "1";
+    document.getElementById("light").classList.add("active");
 }
 </script>
 
