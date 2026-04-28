@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lights</title>
 
+<style>
+body {
+    margin: 0;
+    background: black;
+    text-align: center;
+    font-family: "Comic Sans MS", cursive;
+    color: white;
+}
+
+/* Lights box */
+.light-box {
+    margin-top: 30px;
+    padding: 12px 25px;
+    background-color: pink;
+    color: black;
+    font-size: 16px;
+    border-radius: 12px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Spotlight */
+.spotlight {
+    width: 180px;
+    height: 350px;
+    margin: 0 auto;
+    background: radial-gradient(ellipse at top, rgba(255,255,255,0.8), transparent 70%);
+    opacity: 0;
+    transition: 1s;
+}
+
+/* Video frame */
+.video-frame {
+    width: 320px;
+    height: 180px;
+    border: 2px solid white;
+    margin: 40px auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="light-box" onclick="turnOnLight()">Lights 💡</div>
+
+<div class="spotlight" id="light"></div>
+
+<div class="video-frame"></div>
+
+<script>
+function turnOnLight() {
+    document.getElementById("light").style.opacity = "1";
+}
+</script>
+
+</body>
+</html>
