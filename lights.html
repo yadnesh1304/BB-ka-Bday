@@ -12,6 +12,14 @@ body {
     text-align: center;
     font-family: "Comic Sans MS", cursive;
     color: white;
+    overflow: hidden;
+}
+
+/* Container to control alignment */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Lights box */
@@ -22,37 +30,34 @@ body {
     color: black;
     font-size: 16px;
     border-radius: 12px;
-    display: inline-block;
     cursor: pointer;
     position: relative;
     z-index: 2;
 }
 
-/* Spotlight container (anchored to button) */
+/* Proper cone spotlight */
 .spotlight {
     position: absolute;
+    top: 70px; /* just below button */
     left: 50%;
-    top: 100%; /* starts exactly from bottom of button */
     transform: translateX(-50%);
-    width: 220px;
-    height: 350px;
+    width: 300px;
+    height: 400px;
 
-    /* cone gradient */
-    background: radial-gradient(
-        ellipse at top,
-        rgba(255,255,255,0.7) 0%,
-        rgba(255,255,255,0.4) 30%,
-        rgba(255,255,255,0.1) 60%,
-        transparent 80%
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.8),
+        rgba(255,255,255,0.3),
+        transparent
     );
 
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    clip-path: polygon(50% 0%, 10% 100%, 90% 100%);
     opacity: 0;
     transition: opacity 1.2s ease-in;
     pointer-events: none;
 }
 
-/* active light */
+/* Active */
 .spotlight.active {
     opacity: 1;
 }
@@ -62,19 +67,22 @@ body {
     width: 320px;
     height: 180px;
     border: 2px solid white;
-    margin: 120px auto;
+    margin-top: 200px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="light-box" onclick="turnOnLight()">
-    Lights 💡
-    <div class="spotlight" id="light"></div>
-</div>
+<div class="wrapper">
 
-<div class="video-frame"></div>
+    <div class="light-box" onclick="turnOnLight()">Lights 💡</div>
+
+    <div class="spotlight" id="light"></div>
+
+    <div class="video-frame"></div>
+
+</div>
 
 <script>
 function turnOnLight() {
